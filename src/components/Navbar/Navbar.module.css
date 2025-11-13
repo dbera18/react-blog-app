@@ -1,0 +1,83 @@
+/* src/components/Navbar/Navbar.module.css */
+.header {
+  padding: 1rem 2rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+  /* --- THIS IS THE FIX --- */
+  background-color: #2563eb;  /* A strong blue, like your first image */
+  color: white;             /* White text */
+  /* ------------------------- */
+
+  /* We set a border color that matches the new background */
+  border-bottom: 1px solid #1e40af; /* A slightly darker blue */
+  
+  /* No need to transition these colors anymore */
+}
+.container {
+  max-width: 1024px;
+  margin: 0 auto;
+  display: flex;
+  
+  /* --- THIS IS THE FIX --- */
+  justify-content: space-between; /* Pushes logo and nav apart */
+  /* ------------------------ */
+
+  align-items: center;
+}
+
+.logo {
+  font-size: 1.75rem;
+  font-weight: bold;
+  color: white;
+}
+
+.logo a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.navList {
+  display: flex;
+
+  /* --- THIS IS THE OTHER FIX --- */
+  gap: 1.2rem; /* Adds space BETWEEN links */
+  /* ----------------------------- */
+
+  align-items: center;
+}
+
+.navLink:hover {
+  text-decoration: underline;
+}
+
+.themeToggle {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+  border-radius: 0.375rem;
+  padding: 0.5rem 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.themeToggle:hover {
+  background-color: var(--color-border);
+}
+
+/* --- Responsive Styles --- */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    gap: 1rem;
+    
+    /* On mobile, we don't want space-between */
+    justify-content: center;
+  }
+  
+  .navList {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+}

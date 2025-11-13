@@ -1,0 +1,88 @@
+.title {
+  font-size: 2.05rem;
+  font-weight: bold;
+  color: var(--color-text); /* FIX */
+  margin-bottom: 1rem;
+}
+
+.meta {
+  font-size: 0.875rem;
+  color: var(--color-text); /* FIX */
+  margin-bottom: 1rem;
+}
+
+.meta span {
+  font-weight: 600;
+  /* We don't need a color rule here, it will inherit from .meta */
+}
+
+.content {
+  font-size: 1.125rem;
+  line-height: 1.75;
+  color: var(--color-text); /* FIX */
+  margin-bottom: 1rem;
+}
+
+/* --- Responsive Styles --- */
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 1.75rem;
+  }
+  .meta {
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+}
+
+/* --- Like Button Styles (Text + Image) --- */
+
+.likeSection {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 1rem;
+  border-top: 1px solid var(--color-border); /* Use theme border */
+  padding-top: 1.5rem;
+}
+
+.likeButton {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  
+  /* Use theme colors for the button */
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
+
+  border-radius: 0.375rem;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.likeButton:hover {
+  background-color: var(--color-border); /* Use theme color */
+}
+
+.likeIcon {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+}
+
+/* This .liked style is great, it uses non-theme colors on purpose */
+.liked {
+  background-color: #dbeafe;
+  border-color: #93c5fd;
+  color: #1d4ed8;
+}
+
+.likeCount {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-text); /* FIX */
+}

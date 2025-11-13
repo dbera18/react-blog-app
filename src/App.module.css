@@ -1,0 +1,72 @@
+/* Creates the "sticky footer" layout */
+.appWrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* At least as tall as the screen */
+}
+
+/* This tells the main content to grow and fill empty space */
+.mainContent {
+  flex-grow: 1;
+}
+
+/* This is the white card from your image */
+.card {
+  max-width: 960px;
+  width: 80%;
+  margin: 2.5rem auto; /* 2.5rem top/bottom, auto left/right (centers it) */
+  background-color: white;
+  padding: 2rem;
+  border-radius: 2rem; /* Rounded corners */
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.221), 
+              0 4px 6px -2px rgba(0, 0, 0, 0.113); /* Nice shadow */
+}
+
+/* --- Responsive Styles --- */
+
+/* This will apply to all screens 768px wide or smaller */
+@media (max-width: 768px) {
+  .card {
+    /* Change margin from '2.5rem auto' to '1rem'.
+      This reduces the top/bottom space and makes the card 
+      go almost full-width (with 1rem of space on the sides).
+    */
+    margin: 1rem;
+    width: auto;
+    
+    /* Reduce padding from 2rem to 1.5rem to save space */
+    padding: 1.5rem;
+  }
+}
+/* ... .appWrapper and .mainContent styles ... */
+.appWrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  /* NEW: Use variables for colors */
+  background-color: var(--color-bg);
+  color: var(--color-text);
+}
+
+.mainContent {
+  flex-grow: 1;
+}
+
+/* We don't need .light or .dark here if we set variables on 'body' */
+/* But we DO need to update the card style */
+.card {
+  width: 90%;
+  max-width: 960px;
+  margin: 2.5rem auto; 
+  /* NEW: Use variables */
+  background-color: var(--color-card-bg);
+  padding: 2rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 
+              0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  border: 1px solid var(--color-border);
+}
+
+/* ... responsive styles ... */
+
+
