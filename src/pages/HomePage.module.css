@@ -1,0 +1,79 @@
+/* --- DEFAULT (LIGHT) STYLES --- */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 80vh;
+  padding: 2rem;
+  background-color: #f3f4f6; /* Default Light BG */
+  color: #1f2937;            /* Default Light Text */
+  text-align: center;
+  transition: background-color 0.3s, color 0.3s; /* Smooth transition */
+}
+
+.heroSection {
+  max-width: 800px;
+}
+
+.title {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  color: inherit; /* Inherit color from container */
+}
+
+.description {
+  font-size: 1.25rem;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+  color: inherit; /* Inherit color from container */
+  opacity: 0.9;
+}
+
+.buttonGroup {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.btn {
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  text-decoration: none;
+  font-weight: bold;
+  transition: transform 0.2s;
+}
+
+.btn:hover {
+  transform: scale(1.05);
+}
+
+.loginBtn {
+  background-color: #2563eb;
+  color: white;
+}
+
+.exploreBtn {
+  background-color: transparent;
+  color: #2563eb;
+  border: 2px solid #2563eb;
+}
+
+/* --- DARK MODE OVERRIDES --- */
+
+/* This applies when the container has the 'dark' class */
+.container.dark {
+  background-color: #111827; /* Dark Gray/Black BG */
+  color: #f9fafb;            /* White/Light Gray Text */
+}
+
+/* We need to adjust the buttons for dark mode too */
+.dark .exploreBtn {
+  color: #60a5fa;            /* Lighter Blue for dark mode */
+  border-color: #60a5fa;
+}
+
+.dark .loginBtn {
+  background-color: #3b82f6; /* Slightly lighter blue button */
+}
