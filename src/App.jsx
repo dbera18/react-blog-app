@@ -2,6 +2,8 @@ import React from 'react';
 import { Routes, Route } from 'react-router';
 import { useTheme } from './context/ThemeContext'; // Import our theme hook
 import styles from './App.module.css';
+import HomePage from './pages/HomePage';
+import LoginPage from './pages/LoginPage';
 
 import { useEffect } from 'react';
 
@@ -30,7 +32,10 @@ function App() {
         {/* Routes define which page component to show based on the URL */}
         <Routes>
           {/* path="/" is the homepage */}
-          <Route path="/" element={<BlogPostsPage />} /> 
+          <Route path="/" element={<HomePage />} /> 
+          <Route path="/login" element={<LoginPage/>}/>
+          <Route path="/blog" element={<BlogPostsPage/>}/>
+          
 
           
           {/* path="/post/:postId" is a dynamic route. :postId is a URL parameter */}
