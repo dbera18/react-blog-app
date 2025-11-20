@@ -1,52 +1,76 @@
-/* --- DEFAULT (LIGHT) STYLES --- */
+/* --- ANIMATIONS --- */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px); /* Start slightly lower */
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0); /* End in normal position */
+  }
+}
 
+/* --- LIGHT THEME (Default) --- */
 .container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 80vh;
-  padding: 2rem;
-  background-color: #f3f4f6; /* Default Light BG */
-  color: #1f2937;            /* Default Light Text */
+  min-height: 90vh; /* Taller height */
+  padding: 4rem 2rem;
+  
+  /* Cool Gradient Background */
+  background: linear-gradient(135deg, #f3f4f6 0%, #e0e7ff 100%);
+  
+  color: #1f2937;
   text-align: center;
-  transition: background-color 0.3s, color 0.3s; /* Smooth transition */
+  transition: background 0.3s, color 0.3s;
 }
 
 .heroSection {
   max-width: 800px;
+  margin-bottom: 4rem;
+  
+  /* Add the animation here! */
+  animation: fadeInUp 0.8s ease-out;
 }
 
 .title {
-  font-size: 3rem;
-  margin-bottom: 1rem;
-  color: inherit; /* Inherit color from container */
+  font-size: 3.5rem; /* Bigger text */
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+  background: -webkit-linear-gradient(#2563eb, #9333ea); /* Gradient Text! */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .description {
   font-size: 1.25rem;
-  margin-bottom: 2rem;
+  color: #4b5563;
+  margin-bottom: 2.5rem;
   line-height: 1.6;
-  color: inherit; /* Inherit color from container */
-  opacity: 0.9;
 }
 
 .buttonGroup {
   display: flex;
-  gap: 1rem;
+  gap: 1.5rem;
   justify-content: center;
 }
 
 .btn {
-  padding: 0.75rem 1.5rem;
-  border-radius: 0.5rem;
+  padding: 0.875rem 2rem;
+  border-radius: 2rem; /* Rounder buttons */
   text-decoration: none;
-  font-weight: bold;
-  transition: transform 0.2s;
+  font-weight: 600;
+  font-size: 1.1rem;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* Subtle shadow */
 }
 
 .btn:hover {
-  transform: scale(1.05);
+  transform: translateY(-2px); /* Button floats up on hover */
+  box-shadow: 0 10px 15px rgba(0,0,0,0.1);
 }
 
 .loginBtn {
@@ -55,25 +79,82 @@
 }
 
 .exploreBtn {
-  background-color: transparent;
+  background-color: white;
   color: #2563eb;
-  border: 2px solid #2563eb;
+  border: 2px solid transparent; /* No border, just shadow */
+}
+
+/* --- FEATURES SECTION --- */
+.featuresSection {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 1200px;
+  
+  /* Animation with a delay so it appears after the hero */
+  animation: fadeInUp 0.8s ease-out 0.3s backwards;
+}
+
+.featureCard {
+  background: white;
+  padding: 2rem;
+  border-radius: 1rem;
+  width: 300px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  transition: transform 0.3s;
+}
+
+.featureCard:hover {
+  transform: translateY(-5px); /* Lift card on hover */
+}
+
+.icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.featureCard h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: #111827;
+}
+
+.featureCard p {
+  color: #6b7280;
+  line-height: 1.5;
 }
 
 /* --- DARK MODE OVERRIDES --- */
-
-/* This applies when the container has the 'dark' class */
 .container.dark {
-  background-color: #111827; /* Dark Gray/Black BG */
-  color: #f9fafb;            /* White/Light Gray Text */
+  background: linear-gradient(135deg, #111827 0%, #1e1b4b 100%); /* Dark Gradient */
+  color: #f9fafb;
 }
 
-/* We need to adjust the buttons for dark mode too */
+.dark .title {
+  background: -webkit-linear-gradient(#60a5fa, #c084fc); /* Lighter gradient text */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.dark .description {
+  color: #d1d5db;
+}
+
+.dark .featureCard {
+  background-color: #1f2937; /* Dark card background */
+  box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+}
+
+.dark .featureCard h3 {
+  color: white;
+}
+
+.dark .featureCard p {
+  color: #9ca3af;
+}
+
 .dark .exploreBtn {
-  color: #60a5fa;            /* Lighter Blue for dark mode */
-  border-color: #60a5fa;
-}
-
-.dark .loginBtn {
-  background-color: #3b82f6; /* Slightly lighter blue button */
+  background-color: #1f2937;
+  color: #60a5fa;
 }
