@@ -83,7 +83,11 @@ function IndividualPostPage() {
           {/* 6. Pass the stored API data as props */}
           <BlogPost post={postData} author={authorData} />
           
-          <CommentForm onSubmitComment={handleAddComment} />
+        {user ? (
+  <CommentForm onSubmitComment={handleAddComment} />
+) : (
+  <p>Please <Link to="/login">login</Link> to leave a comment.</p>
+)}
           
           <CommentList comments={comments} />
         </>

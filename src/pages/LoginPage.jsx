@@ -1,18 +1,37 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router'; // 1. Import useNavigate
+import { useAuth } from '../context/AuthContext'; // 2. Import useAuth
 import styles from './LoginPage.module.css';
 
 export default function LoginPage() {
-  // 1. State to hold the input values
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
-  // 2. Function to handle form submission
+  // 3. Get the tools we need
+  const { login } = useAuth(); 
+  const navigate = useNavigate(); 
+
   const handleSubmit = (e) => {
-    e.preventDefault(); // Prevents the page from refreshing
-    
-    // For now, we just log it to check if it works.
-    // In Step 6, we will call the "login" function here.
-    console.log("Submitting:", username, password);
+    e.preventDefault();
+
+    // 4. Validation: Make sure fields aren't empty
+    if (!username || !password) {
+      alert("Please enter both username and password");
+      return;
+    }
+
+    // 5. Call the login function from Context
+    // We pass the data the user typed in.
+    const success = login(username, password);
+
+    // 6. Check if login worked
+    if (success) {
+      // If true, redirect to the blog page
+      navigate('/blog');
+    } else {
+      // If false, show an error
+      alert("Invalid username or password. (Try 'admin' and '123')");
+    }
   };
 
   return (
@@ -21,8 +40,6 @@ export default function LoginPage() {
         <h2 className={styles.heading}>Login</h2>
         
         <form onSubmit={handleSubmit} className={styles.form}>
-          
-          {/* Username Input */}
           <div className={styles.formGroup}>
             <label htmlFor="username">Username</label>
             <input 
@@ -31,11 +48,9 @@ export default function LoginPage() {
               value={username}
               onChange={(e) => setUsername(e.target.value)}
               placeholder="Enter username"
-              required
             />
           </div>
 
-          {/* Password Input */}
           <div className={styles.formGroup}>
             <label htmlFor="password">Password</label>
             <input 
@@ -44,15 +59,12 @@ export default function LoginPage() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               placeholder="Enter password"
-              required
             />
           </div>
 
-          {/* Submit Button */}
           <button type="submit" className={styles.submitBtn}>
             Login
           </button>
-          
         </form>
       </div>
     </div>
