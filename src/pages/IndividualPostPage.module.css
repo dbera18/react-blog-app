@@ -12,6 +12,21 @@
   box-shadow: 0 4px 6px rgba(0,0,0,0.05);
 }
 
+.loginPrompt {
+  margin: 1rem 0;
+  color: var(--color-text);
+}
+
+.loginLink {
+  font-weight: 600;
+  color: var(--color-text);
+  text-decoration: underline;
+}
+
+.loginLink:hover {
+  color: #2563eb;
+}
+
 @media (max-width: 768px) {
   .card {
     width: auto;

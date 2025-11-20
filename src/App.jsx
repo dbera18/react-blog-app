@@ -13,7 +13,6 @@ import Footer from './components/Footer/Footer';
 import BlogPostsPage from './pages/BlogPostsPage';
 import IndividualPostPage from './pages/IndividualPostPage';
 import ContactPage from './pages/ContactPage';
-import ProtectedRoute from './components/ProtectedRoute';
 
 function App() {
   // Get the current theme from our context
@@ -35,26 +34,12 @@ function App() {
           {/* path="/" is the homepage */}
           <Route path="/" element={<HomePage />} /> 
           <Route path="/login" element={<LoginPage/>}/>
-          <Route 
-            path="/blog" 
-            element={
-              <ProtectedRoute>
-                <BlogPostsPage/>
-              </ProtectedRoute>
-            }
-          />
+          <Route path="/blog" element={<BlogPostsPage/>} />
           
 
           
           {/* path="/post/:postId" is a dynamic route. :postId is a URL parameter */}
-          <Route 
-            path="/post/:postId" 
-            element={
-              <ProtectedRoute>
-                <IndividualPostPage />
-              </ProtectedRoute>
-            } 
-          />
+          <Route path="/post/:postId" element={<IndividualPostPage />} />
           
           {/* path="/contact" is the contact page */}
           <Route path="/contact" element={<ContactPage />} />

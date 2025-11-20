@@ -58,6 +58,11 @@ function IndividualPostPage() {
 
   // Function to add a new comment (as before)
   const handleAddComment = async (text) => {
+    if (!user) {
+      alert('You need to log in to leave a comment.');
+      return;
+    }
+
     const newCommentPayload = {
       name: user.username,
       body: text, 
@@ -91,8 +96,10 @@ function IndividualPostPage() {
               currentUser={user}
             />
           ) : (
-            <p>
-              Please <Link to="/login">login</Link> to leave a comment.
+            <p className={styles.loginPrompt}>
+              You can read comments as a guest, but please{' '}
+              <Link to="/login" className={styles.loginLink}>log in</Link>{' '}
+              to leave one.
             </p>
           )}
           
