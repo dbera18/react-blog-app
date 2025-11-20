@@ -63,6 +63,7 @@ export default function LoginPage() {
               placeholder="Enter password"
             />
           </div>
+         
 
           <button type="submit" className={styles.submitBtn}>
             Login

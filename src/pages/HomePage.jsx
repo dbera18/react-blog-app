@@ -12,7 +12,7 @@ function HomePage() {
       {/* Hero Section (The top part) */}
       <div className={styles.heroSection}>
         <h1 className={styles.title}>
-          Welcome to My Awesome Blog
+          Welcome to Our Awesome Blog
         </h1>
         <p className={styles.description}>
           This is the place where I share my thoughts on React, coding, and life. 
