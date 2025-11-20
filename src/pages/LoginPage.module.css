@@ -3,23 +3,26 @@
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background-color: #f3f4f6;
+  background: var(--color-bg);
   padding: 4rem 2rem;
+  transition: background 0.3s ease;
 }
 
 .loginCard {
-  background: white;
+  background: var(--color-card-bg);
   padding: 2.5rem;
   border-radius: 1rem;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--color-border);
   width: 100%;
   max-width: 400px; /* Keeps the form from getting too wide */
+  color: var(--color-text);
 }
 
 .heading {
   text-align: center;
   margin-bottom: 2rem;
-  color: #1f2937;
+  color: var(--color-text);
   font-size: 1.8rem;
 }
 
@@ -37,22 +40,24 @@
 
 .formGroup label {
   font-weight: 600;
-  color: #4b5563;
+  color: var(--color-text);
   font-size: 0.9rem;
 }
 
 .formGroup input {
   padding: 0.75rem;
-  border: 1px solid #d1d5db;
+  border: 1px solid var(--color-border);
   border-radius: 0.5rem;
   font-size: 1rem;
   transition: border-color 0.2s;
+  background-color: transparent;
+  color: var(--color-text);
 }
 
 .formGroup input:focus {
   outline: none;
   border-color: #2563eb;
-  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.25);
 }
 
 .submitBtn {
@@ -71,3 +76,14 @@
 .submitBtn:hover {
   background-color: #1d4ed8;
 }
+
+.container.dark .loginCard {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+}
+
+.container.dark .formGroup input {
+  background-color: rgba(255, 255, 255, 0.03);
+}
+
+.light {}
+.dark {}

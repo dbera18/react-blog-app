@@ -1,24 +1,27 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from './CommentForm.module.css';
 
-function CommentForm({ onSubmitComment }) {
-  const [name, setName] = useState('');
+function CommentForm({ onSubmitComment, currentUser }) {
   const [text, setText] = useState('');
+  const [userName, setUserName] = useState(currentUser?.username || '');
+
+  useEffect(() => {
+    setUserName(currentUser?.username || '');
+  }, [currentUser]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     
     // 4. Ensure that the form inputs are validated
-    if (!name.trim() || !text.trim()) {
-      alert("Please fill in both name and comment.");
+    if (!text.trim()) {
+      alert("Please enter a comment before submitting.");
       return; // Stop submission if fields are empty
     }
 
     // Pass the valid data up to the parent component
-    onSubmitComment(name, text);
+    onSubmitComment(text);
     
     // Clear form
-    setName(''); 
     setText(''); 
   };
 
@@ -27,15 +30,7 @@ function CommentForm({ onSubmitComment }) {
       {/* 1. Implement a comment form (name and comment) */}
       <h3 className={styles.heading}>Leave a Comment</h3>
       <form className={styles.form} onSubmit={handleSubmit}>
-        <div className={styles.formGroup}>
-          <label htmlFor="name">Name</label>
-          <input 
-            type="text" 
-            id="name" 
-            value={name} 
-            onChange={(e) => setName(e.target.value)} 
-          />
-        </div>
+        <p className={styles.userBadge}>Commenting as <strong>{userName}</strong></p>
         <div className={styles.formGroup}>
           <label htmlFor="comment">Comment</label>
           <textarea 

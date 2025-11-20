@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router'; // 1. Import useNavigate
 import { useAuth } from '../context/AuthContext'; // 2. Import useAuth
+import { useTheme } from '../context/ThemeContext';
 import styles from './LoginPage.module.css';
 
 export default function LoginPage() {
@@ -10,6 +11,7 @@ export default function LoginPage() {
   // 3. Get the tools we need
   const { login } = useAuth(); 
   const navigate = useNavigate(); 
+  const { theme } = useTheme();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -35,7 +37,7 @@ export default function LoginPage() {
   };
 
   return (
-    <div className={styles.container}>
+    <div className={`${styles.container} ${styles[theme]}`}>
       <div className={styles.loginCard}>
         <h2 className={styles.heading}>Login</h2>
         

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router';
+import { Link, useParams } from 'react-router';
 import { useTheme } from '../context/ThemeContext';
+import { useAuth } from '../context/AuthContext';
 import styles from './IndividualPostPage.module.css';
 
 // Import our components
@@ -11,6 +12,7 @@ import axios from 'axios';
 
 function IndividualPostPage() {
   const { theme } = useTheme();
+  const { user } = useAuth();
   // 1. Use useParams to get the postId from the URL
   const { postId } = useParams(); 
 
@@ -55,9 +57,9 @@ function IndividualPostPage() {
   }, [postId]); // Re-run if the postId (in the URL) changes
 
   // Function to add a new comment (as before)
-  const handleAddComment = async (name, text) => {
+  const handleAddComment = async (text) => {
     const newCommentPayload = {
-      name: name,
+      name: user.username,
       body: text, 
     };
 
@@ -83,11 +85,16 @@ function IndividualPostPage() {
           {/* 6. Pass the stored API data as props */}
           <BlogPost post={postData} author={authorData} />
           
-        {user ? (
-  <CommentForm onSubmitComment={handleAddComment} />
-) : (
-  <p>Please <Link to="/login">login</Link> to leave a comment.</p>
-)}
+          {user ? (
+            <CommentForm 
+              onSubmitComment={handleAddComment} 
+              currentUser={user}
+            />
+          ) : (
+            <p>
+              Please <Link to="/login">login</Link> to leave a comment.
+            </p>
+          )}
           
           <CommentList comments={comments} />
         </>
