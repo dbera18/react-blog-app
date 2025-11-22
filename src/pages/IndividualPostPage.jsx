@@ -97,9 +97,7 @@ function IndividualPostPage() {
             />
           ) : (
             <p className={styles.loginPrompt}>
-              You can read comments as a guest, but please{' '}
-              <Link to="/login" className={styles.loginLink}>log in</Link>{' '}
-              to leave one.
+              You can add a comments as a guest, but please <Link to="/login">Log in</Link> to leave one.
             </p>
           )}
           
